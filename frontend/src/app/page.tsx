@@ -1,9 +1,9 @@
-import HomeClient from "./HomeClient";
+import TabsPageClient from "./TabsPageClient";
 
 export default function Home() {
   return (
     <main>
-      <HomeClient />
+      <TabsPageClient pageKey="home" />
     </main>
   );
 }

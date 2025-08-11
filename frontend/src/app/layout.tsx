@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import Navbar from "@/components/Navbar";
+import TabNav from "@/components/TabNav";
 
 export default function RootLayout({
   children,
@@ -34,6 +35,7 @@ export default function RootLayout({
         <LanguageProvider>
           <div className="mx-auto max-w-4xl px-6">
             <Navbar />
+            <TabNav />
             {children}
           </div>
         </LanguageProvider>
