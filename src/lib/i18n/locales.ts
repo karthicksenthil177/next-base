@@ -12,10 +12,14 @@ export type Translations = {
     language: string;
     tabs: {
       home: string;
-      a: string;
-      b: string;
-      c: string;
-      d: string;
+      innovation: string;
+      operations: string;
+      bundles: string;
+      pillars: string;
+      bundle: string;
+      solution: string;
+      resource: string;
+      support: string;
     };
   };
   home: {
@@ -23,7 +27,7 @@ export type Translations = {
     subtitle: string;
     cta: string;
   };
-  pages: Record<"home" | "a" | "b" | "c" | "d", { title: string; description?: string }>;
+  pages: Record<"home" | "innovation" | "operations" | "bundles" | "pillars" | "bundle" | "solution" | "resource" | "support", { title: string; description?: string }>;
 };
 
 export const TRANSLATIONS: Record<SupportedLocale, Translations> = {
@@ -35,10 +39,14 @@ export const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       language: 'Language',
       tabs: {
         home: 'Home',
-        a: 'Page A',
-        b: 'Page B',
-        c: 'Page C',
-        d: 'Page D',
+        innovation: 'Innovation',
+        operations: 'Operations',
+        bundles: 'Bundles',
+        pillars: 'Pillars',
+        bundle: 'Bundle',
+        solution: 'Solution',
+        resource: 'Resource',
+        support: 'Support',
       },
     },
     home: {
@@ -47,11 +55,15 @@ export const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       cta: 'Learn more'
     },
     pages: {
-      home: { title: 'Home', description: 'This is the home page.' },
-      a: { title: 'Page A', description: 'Content for A.' },
-      b: { title: 'Page B', description: 'Content for B.' },
-      c: { title: 'Page C', description: 'Content for C.' },
-      d: { title: 'Page D', description: 'Content for D.' },
+      home: { title: 'Home', description: 'Welcome to the home page.' },
+      innovation: { title: 'Innovation', description: 'Explore innovative ideas, features, and experiments.' },
+      operations: { title: 'Operations', description: 'Operational processes, workflows, and best practices.' },
+      bundles: { title: 'Bundles', description: 'Overview of product and service bundles.' },
+      pillars: { title: 'Pillars', description: 'Key pillars and principles of our platform.' },
+      bundle: { title: 'Bundle', description: 'Specific bundle details and configurations.' },
+      solution: { title: 'Solution', description: 'End-to-end solutions and use cases.' },
+      resource: { title: 'Resource', description: 'Documentation, downloads, and assets.' },
+      support: { title: 'Support', description: 'Get help, FAQs, and contact support.' },
     },
   },
   es: {
@@ -62,10 +74,14 @@ export const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       language: 'Idioma',
       tabs: {
         home: 'Inicio',
-        a: 'Página A',
-        b: 'Página B',
-        c: 'Página C',
-        d: 'Página D',
+        innovation: 'Innovación',
+        operations: 'Operaciones',
+        bundles: 'Paquetes',
+        pillars: 'Pilares',
+        bundle: 'Paquete',
+        solution: 'Solución',
+        resource: 'Recurso',
+        support: 'Soporte',
       },
     },
     home: {
@@ -74,11 +90,15 @@ export const TRANSLATIONS: Record<SupportedLocale, Translations> = {
       cta: 'Aprende más'
     },
     pages: {
-      home: { title: 'Inicio', description: 'Esta es la página de inicio.' },
-      a: { title: 'Página A', description: 'Contenido de A.' },
-      b: { title: 'Página B', description: 'Contenido de B.' },
-      c: { title: 'Página C', description: 'Contenido de C.' },
-      d: { title: 'Página D', description: 'Contenido de D.' },
+      home: { title: 'Inicio', description: 'Bienvenido a la página de inicio.' },
+      innovation: { title: 'Innovación', description: 'Explora ideas, funciones y experimentos innovadores.' },
+      operations: { title: 'Operaciones', description: 'Procesos operativos, flujos de trabajo y buenas prácticas.' },
+      bundles: { title: 'Paquetes', description: 'Resumen de paquetes de productos y servicios.' },
+      pillars: { title: 'Pilares', description: 'Pilares y principios clave de nuestra plataforma.' },
+      bundle: { title: 'Paquete', description: 'Detalles y configuraciones de un paquete específico.' },
+      solution: { title: 'Solución', description: 'Soluciones integrales y casos de uso.' },
+      resource: { title: 'Recurso', description: 'Documentación, descargas y recursos.' },
+      support: { title: 'Soporte', description: 'Obtén ayuda, preguntas frecuentes y contacto.' },
     },
   }
 };

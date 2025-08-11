@@ -5,11 +5,15 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const tabs = [
-  { href: "/tabs", key: "home" as const },
-  { href: "/tabs/a", key: "a" as const },
-  { href: "/tabs/b", key: "b" as const },
-  { href: "/tabs/c", key: "c" as const },
-  { href: "/tabs/d", key: "d" as const },
+  { href: "/", key: "home" as const },
+  { href: "/innovation", key: "innovation" as const },
+  { href: "/operations", key: "operations" as const },
+  { href: "/bundles", key: "bundles" as const },
+  { href: "/pillars", key: "pillars" as const },
+  { href: "/bundle", key: "bundle" as const },
+  { href: "/solution", key: "solution" as const },
+  { href: "/resource", key: "resource" as const },
+  { href: "/support", key: "support" as const },
 ];
 
 export default function TabNav() {
