@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-type PageKey = "home" | "a" | "b" | "c" | "d";
+type PageKey = "home" | "innovation" | "operations" | "bundles" | "pillars" | "bundle" | "solution" | "resource" | "support";
 
 export default function TabsPageClient({ pageKey }: { pageKey: PageKey }) {
   const { t } = useLanguage();
