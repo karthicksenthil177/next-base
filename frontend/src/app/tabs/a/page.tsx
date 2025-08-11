@@ -1,4 +1,4 @@
-import TabsPageClient from "../TabsPageClient";
+import TabsPageClient from "../../TabsPageClient";
 
 export default function PageA() {
   return <TabsPageClient pageKey="a" />;
