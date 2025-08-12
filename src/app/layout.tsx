@@ -20,18 +20,24 @@ export const metadata: Metadata = {
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import Navbar from "@/components/Navbar";
 import TabNav from "@/components/TabNav";
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n/locales";
+import { cookies } from "next/headers";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const cookieLocale = cookieStore.get?.('locale')?.value as SupportedLocale | undefined;
+  const initialLocale: SupportedLocale = cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale) ? cookieLocale : DEFAULT_LOCALE;
+
   return (
-    <html lang="en">
+    <html lang={initialLocale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LanguageProvider>
+        <LanguageProvider initialLocale={initialLocale}>
           <div className="mx-auto max-w-4xl px-6">
             <Navbar />
             <TabNav />

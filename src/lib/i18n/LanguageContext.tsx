@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, TRANSLATIONS, type SupportedLocale, type Translations } from './locales';
+import { SUPPORTED_LOCALES, TRANSLATIONS, type SupportedLocale, type Translations } from './locales';
 
 export type LanguageContextValue = {
   locale: SupportedLocale;
@@ -11,22 +11,27 @@ export type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-function getInitialLocale(): SupportedLocale {
-  if (typeof window === 'undefined') return DEFAULT_LOCALE;
-  const stored = window.localStorage.getItem('locale') as SupportedLocale | null;
-  if (stored && SUPPORTED_LOCALES.includes(stored)) return stored;
-  const browser = navigator.language?.split('-')[0] as SupportedLocale | undefined;
-  if (browser && SUPPORTED_LOCALES.includes(browser)) return browser;
-  return DEFAULT_LOCALE;
-}
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<SupportedLocale>(getInitialLocale);
+export function LanguageProvider({ children, initialLocale }: { children: React.ReactNode; initialLocale: SupportedLocale }) {
+  const [locale, setLocaleState] = useState<SupportedLocale>(initialLocale);
+
+  // After hydration, reconcile with localStorage/browser preference without causing hydration mismatch
+  useEffect(() => {
+    const stored = (typeof window !== 'undefined'
+      ? (window.localStorage.getItem('locale') as SupportedLocale | null)
+      : null);
+    const next = stored && SUPPORTED_LOCALES.includes(stored) ? stored : initialLocale;
+    if (next !== locale) setLocaleState(next);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     try {
-      window.localStorage.setItem('locale', locale);
-      document.documentElement.lang = locale;
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('locale', locale);
+        document.documentElement.lang = locale;
+        document.cookie = `locale=${locale}; Path=/; Max-Age=${60 * 60 * 24 * 365}`;
+      }
     } catch {}
   }, [locale]);
 
